@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/tablet.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+
+    <th:block th:if="${content == 'description'}">
+        <link href="/css/descriptions.css" rel="stylesheet">
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    </th:block>
+    <th:block th:if="${content == 'supplements'}">
+        <link href="/css/row.css" rel="stylesheet">
+    </th:block>
+    <script src="/js/index.js" defer></script>
+</head>
+<body>
+<div class="container">
+<nav th:replace="~{fragments/navbar :: navbar(${content}, ${id})}"></nav>
+<th:block th:switch="${content}">
+    <th:block th:case="'showcase'">
+        <div th:replace="~{system/showcase :: content(${systems})}"></div>
+    </th:block>
+    <th:block th:case="'system-page'">
+        <main th:replace="~{system/page :: content(page)}"></main>
+    </th:block>
+    <th:block th:case="'description'">
+        <main th:replace="~{system/page.sections/description :: description(${system})}"></main>
+    </th:block>
+    <th:block th:case="'supplements'">
+        <main th:replace="~{system/page.sections/supplements :: supplements(${system})}"></main>
+    </th:block>
+</th:block>
+</div>
+<!--<div th:replace="~{fragments/footer :: footer()}"></div>-->
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

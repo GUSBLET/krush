@@ -1,0 +1,109 @@
+nav {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--blue);
+    border-left: 10px solid var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.navbar.active {
+    width: 80px;
+    background: var(--blue);
+}
+.navbar ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navbar ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navbar ul li:hover,
+.navbar ul li.hovered {
+    background-color: var(--lightblue);
+    color: var(--softGreen);
+}
+
+.navbar ul li:nth-child(1) {
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navbar ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+.navbar ul li:hover a,
+.navbar ul li.hovered a {
+    color: var(--blue);
+}
+
+.navbar ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 75px;
+    text-align: center;
+}
+.navbar ul li a .icon ion-icon {
+    font-size: 1.75rem;
+}
+
+.navbar ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+.navbar ul li:hover a::before,
+.navbar ul li.hovered a::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--lightblue);
+    pointer-events: none;
+
+}
+.navbar ul li:hover a::after,
+.navbar ul li.hovered a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--lightblue);
+    pointer-events: none;
+}
+
+.navbar ul li a .icon ion-icon {
+    color: var(--iconcolor);
+}
+.navbar ul li a .icon ion-icon:hover {
+    color: var(--softGreen);
+}

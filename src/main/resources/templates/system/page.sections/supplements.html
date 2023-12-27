@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="supplements(system)">
+    <main class="supplements">
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+        </div>
+        <h3 th:text="${'Назва: ' + system.name}"></h3>
+        <div class="analytics">
+            <div class="accordion-group">
+                <h2>Література</h2>
+                <div th:if="${system.literatures == null or system.literatures.isEmpty()}" class="item">
+                    <div class="accordion acc-box">
+                        <div class="acc-heading">
+                            <h5>Пусто</h5>
+                        </div>
+                    </div>
+                </div>
+                <div th:each="item : ${system?.literatures}" class="item">
+                    <div class="accordion acc-box">
+                        <div class="acc-heading">
+                            <h5 th:text="${item?.name}"></h5>
+                            <p class="symbol">+</p>
+                        </div>
+                        <div class="acc-text">
+                            <div class="bottom-data">
+                                <div class="descriptions-list">
+                                    <ul class="list-name">
+                                        <li class="side-color">
+                                            <div class="task-title">
+                                                <p th:text="'Автор: ' + ${item?.author != null and item?.author != '' ? item?.author : 'Пусто'}"></p>
+                                            </div>
+                                        </li>
+                                        <li class="side-color">
+                                            <div class="task-title">
+                                                <p th:text="'Описание: ' + ${item?.description != null and item?.description != '' ? item?.description : 'Пусто'}"></p>
+                                            </div>
+                                        </li>
+                                        <li class="side-color">
+                                            <div class="task-title">
+                                                <p th:text="'Дата останього доступу: ' + ${item?.dateOfLastAccess != null and item?.dateOfLastAccess != '' ? item?.dateOfLastAccess : 'Пусто'}"></p>
+                                            </div>
+                                        </li>
+                                        <li class="side-color">
+                                            <div class="task-title">
+                                                <a th:href="${item?.url}"
+                                                   th:text="'Url: ' + ${item?.url != null and item?.url != '' ? item?.url : 'Пусто'}"></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="accordion-group">
+                <h2>Класифікувати комп’ютерні системи</h2>
+                <div th:if="${system.classifierComputerSystems == null or system.classifierComputerSystems.isEmpty()}" class="item">
+                    <div class="accordion acc-box">
+                        <div class="acc-heading">
+                            <h5>Пусто</h5>
+                        </div>
+                    </div>
+                </div>
+                <div th:each="item : ${system?.classifierComputerSystems}" class="item">
+                    <div class="accordion acc-box">
+                        <div class="acc-heading">
+                            <h5 th:text="'Назва: ' + ${item?.name != null and item?.name != '' ? item?.name : 'Пусто'}"></h5>
+                            <p class="symbol">+</p>
+                        </div>
+                        <div class="acc-text">
+                            <div class="bottom-data">
+                                <div class="descriptions-list">
+                                    <ul class="list-name">
+                                        <li class="side-color">
+                                            <div class="task-title">
+                                                <p th:text="'Опис: ' + ${item?.description != null and item?.description != '' ? item?.description : 'Пусто'}"></p>
+                                            </div>
+                                        </li>
+                                        <li class="side-color">
+                                            <div class="task-title">
+                                                <p th:text="'Тип: ' + ${item?.classifierComputerSystemType != null and item?.classifierComputerSystemType != '' ? item?.classifierComputerSystemType.name : 'Пусто'}"></p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-group">
+                <h2>Класифікатори екологічного моніторингу</h2>
+                <div th:if="${system.environmentalMonitoringClassifiers  == null or system.environmentalMonitoringClassifiers.isEmpty()}" class="item">
+                    <div class="accordion acc-box">
+                        <div class="acc-heading">
+                            <h5>Пусто</h5>
+                        </div>
+                    </div>
+                </div>
+                <div th:unless="${system.environmentalMonitoringClassifiers  == null or system.environmentalMonitoringClassifiers.isEmpty()}" class="item">
+                    <div class="accordion acc-box">
+                        <div th:each="item : ${system?.environmentalMonitoringClassifiers}" class="acc-heading">
+                            <h5 th:text="${item?.name != null and item?.name != '' ? item?.name : 'Пусто'}"></h5>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-group">
+                <h2>Експертні функції</h2>
+                <div th:if="${system.expertFunctions == null or system.expertFunctions.isEmpty()}" class="item">
+                    <div class="accordion acc-box">
+                        <div class="acc-heading">
+                            <h5>Пусто</h5>
+                        </div>
+                    </div>
+                </div>
+                <div th:unless="${system.expertFunctions == null or system.expertFunctions.isEmpty()}" class="item">
+                    <div th:each="item : ${system?.expertFunctions}" class="accordion acc-box">
+                        <div class="acc-heading">
+                            <h5 th:text="${item?.name != null and item?.name != '' ? item?.name : 'Пусто'}"></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

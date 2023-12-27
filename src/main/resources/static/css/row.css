@@ -1,0 +1,168 @@
+.accordion-group h2 {
+    margin-bottom: 20px;
+}
+
+.accordion {
+    width: 100%;
+    background-color: var(--lightblue);
+    padding: 18px;
+    margin: 4px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.acc-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #1b1b1b;
+}
+
+.acc-text {
+    max-height: 0;
+    overflow: hidden;
+    transition: all .4s ease;
+}
+
+.symbol {
+    font-size: 20px;
+}
+
+.acc-text p {
+    font-size: 14px;
+    color: #1b1b1b;
+}
+
+.accordion.active .acc-text {
+    max-height: 100vh;
+    transition: all 1s ease-in-out;
+}
+
+/*Current Title */
+
+.supplements h3 {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.supplements .analytics {
+    margin: 20px 40px 20px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.supplements .analytics .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: var(--white);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.supplements .analytics .item:hover {
+    background-color: #f4f4f4;
+}
+
+:root {
+    --dark: #363949;
+}
+
+.bottom-data {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 24px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.bottom-data > div {
+    border-radius: 20px;
+    background: var(--lightblue);
+    padding: 8px;
+    overflow-x: auto;
+}
+
+
+.bottom-data .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+.bottom-data .header h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.bottom-data .header ion-icon {
+    cursor: pointer;
+}
+
+.bottom-data .descriptions-list {
+    flex-grow: 1;
+    flex-basis: 300px;
+}
+
+.bottom-data .descriptions-list .list-name {
+    width: 100%;
+}
+
+.bottom-data .descriptions-list .list-name li {
+    width: 100%;
+    margin-bottom: 16px;
+    background: var(--white);
+    padding: 14px 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bottom-data .descriptions-list .list-name li .task-title {
+    display: flex;
+    align-items: center;
+}
+
+.bottom-data .descriptions-list .list-name li .task-title p {
+    margin-left: 6px;
+}
+
+.bottom-data .descriptions-list .list-name li ion-icon {
+    cursor: pointer;
+}
+
+.bottom-data .descriptions-list .list-name li.side-color {
+    border-left: 10px solid var(--blue);
+}
+
+.bottom-data .descriptions-list .list-name li:last-child {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 576px) {
+
+    .bottom-data .header{
+        min-width: 340px;
+    }
+
+    .bottom-data .map-container {
+        min-width: 340px;
+    }
+
+    .content main .bottom-data .descriptions-list .list-name{
+        min-width: 340px;
+    }
+
+}
+

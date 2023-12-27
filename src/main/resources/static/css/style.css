@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px; /*change to rem*/
+    background: var(--lightblue);
+}
+
+body {
+    min-height: 100vh;
+    font-family: poppins, sans-serif;
+    font-size: 1rem;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+a {
+    color: black;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+:root {
+    --blue: #87CEEB;
+    --white: #f0fafa;
+    --gray: #dcdcdc;
+    --softGreen: #A9DFBF;
+    --lightblue: #e6f7ff;
+    --iconcolor: #f0fff0;
+}
+
+/*@media (max-width: 991px) {*/
+/*    .navbar {*/
+/*        left: -300px;*/
+/*    }*/
+/*    .navbar.active {*/
+/*        width: 300px;*/
+/*        left: 0;*/
+/*    }*/
+/*    main {*/
+/*        width: 100%;*/
+/*        left: 0;*/
+/*    }*/
+/*    main.active {*/
+/*        left: 300px;*/
+/*    }*/
+/*}*/
+
+/*@media (max-width: 480px) {*/
+/*    .navbar {*/
+/*        width: 100%;*/
+/*        left: -100%;*/
+/*        z-index: 1000;*/
+/*    }*/
+/*    .navbar.active {*/
+/*        width: 100%;*/
+/*        left: 0;*/
+/*    }*/
+/*    .toggle {*/
+/*        z-index: 10001;*/
+/*    }*/
+/*    main.active .toggle {*/
+/*        color: #fff;*/
+/*        position: fixed;*/
+/*        right: 0;*/
+/*        left: initial;*/
+/*    }*/
+/*}*/

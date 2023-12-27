@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="content(systems)" class="container">
+    <main>
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+        </div>
+        <div class="tablet">
+            <h3>Main tablet</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>
+                        Назва програми
+                    </th>
+                    <th>
+                        Розробник
+                    </th>
+                    <th>
+                        Країна
+                    </th>
+                    <th>
+                        Тип ПЗ
+                    </th>
+                    <th>
+                        Показати більше
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${systems.content}">
+                    <td th:text="${item.name}"></td>
+                    <td th:text="${item.developer}"></td>
+                    <td th:text="${item?.country?.name}"></td>
+                    <td th:text="${item?.type?.name}"></td>
+                    <td>
+                        <a th:href="@{/description(id=${item.id})}" class="show-link">Show</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <button th:if="${systems.hasPrevious()}"
+                        th:onclick="goToPage(this.getAttribute('data-path'))"
+                        th:href="@{/(page=${systems.number - 1})}"
+                        th:data-path="${'/?page=' + (systems.number - 1)}"
+                        id="previousBtn"
+                        aria-label="Previous">
+                    &laquo; Previous
+                </button>
+
+                <span th:if="${systems.getTotalElements() > 0}" th:text="${systems.number + 1}" id="currentPage"></span>
+
+                <button th:if="${systems.hasNext()}"
+                        th:onclick="goToPage(this.getAttribute('data-path'))"
+                        th:data-path="${'/?page=' + (systems.number + 1)}"
+                        aria-label="Next"
+                        class="btn-table">
+                    Next &raquo;
+                </button>
+            </div>
+        </div>
+    </main>
+    <script>
+        const goToPage = (path) => {
+            window.location.href=path;
+        }
+    </script>
+</div>
+</body>
+</html>

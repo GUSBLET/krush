@@ -1,0 +1,118 @@
+:root {
+    --dark: #363949;
+}
+
+.bottom-data ion-icon {
+    font-size: 1.75rem;
+    color: var(--blue);
+}
+
+.descriptions {
+    padding: 40px 40px 0 40px;
+}
+
+.descriptions .bottom-data .map{
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.descriptions .bottom-data .map{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.descriptions .bottom-data {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 24px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.descriptions .bottom-data > div {
+    border-radius: 20px;
+    background: var(--white);
+    padding: 24px;
+    overflow-x: auto;
+}
+
+.descriptions .bottom-data .map-container {
+    height: 500px;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.descriptions .bottom-data .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+.descriptions .bottom-data .header h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.descriptions .bottom-data .header ion-icon {
+    cursor: pointer;
+}
+
+.descriptions .bottom-data .descriptions-list {
+    flex-grow: 1;
+    flex-basis: 300px;
+}
+
+.descriptions .bottom-data .descriptions-list .list-name {
+    width: 100%;
+}
+
+.descriptions .bottom-data .descriptions-list .list-name li {
+    width: 100%;
+    margin-bottom: 16px;
+    background: var(--lightblue);
+    padding: 14px 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.descriptions .bottom-data .descriptions-list .list-name li .task-title {
+    display: flex;
+    align-items: center;
+}
+
+.descriptions .bottom-data .descriptions-list .list-name li .task-title p {
+    margin-left: 6px;
+}
+
+.descriptions .bottom-data .descriptions-list .list-name li ion-icon {
+    cursor: pointer;
+}
+
+.descriptions .bottom-data .descriptions-list .list-name li.side-color {
+    border-left: 10px solid var(--blue);
+}
+
+.descriptions .bottom-data .descriptions-list .list-name li:last-child {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 576px) {
+
+    .descriptions .bottom-data .header{
+        min-width: 340px;
+    }
+
+    .descriptions .bottom-data .map-container {
+        min-width: 340px;
+    }
+
+    .content main .bottom-data .descriptions-list .list-name{
+        min-width: 340px;
+    }
+
+}

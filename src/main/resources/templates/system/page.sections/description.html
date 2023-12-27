@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="description(system)">
+  <main class="descriptions">
+    <div class="topbar">
+      <div class="toggle">
+        <ion-icon name="menu-outline"></ion-icon>
+      </div>
+    </div>
+    <div class="bottom-data">
+
+      <div class="descriptions-list">
+        <div class="header">
+          <ion-icon name="clipboard-outline"></ion-icon>
+          <h3>Descriptions</h3>
+        </div>
+        <ul class="list-name">
+          <li class="side-color">
+            <div class="task-title">
+              <ion-icon name="happy-outline"></ion-icon>
+              <p th:text="'Назва: ' + ${system?.name != null and system?.name != '' ? system?.name : 'Пусто'}"></p>
+            </div>
+            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+          </li>
+          <li class="side-color">
+            <div class="task-title">
+              <ion-icon name="walk-outline"></ion-icon>
+              <p th:text="'Автор: ' + ${system?.developer != null and system?.developer != '' ? system?.developer : 'Пусто'}"></p>
+            </div>
+            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+          </li>
+          <li class="side-color">
+            <div class="task-title">
+              <ion-icon name="layers-outline"></ion-icon>
+              <p th:text="'Наявність Класифікатора прийняття рішень: ' + (${system.availabilityOfDecisionMakingClassifier} ? 'Так' : 'Ні')"></p>
+            </div>
+            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+          </li>
+          <li class="side-color">
+            <div class="task-title">
+              <ion-icon name="calendar-outline"></ion-icon>
+              <p th:text="'Рік випуску: ' + ${system?.releaseDate != null and system?.releaseDate != '' ? system?.releaseDate : 'Пусто'}"></p>
+            </div>
+            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+          </li>
+          <li class="side-color">
+            <div class="task-title">
+              <ion-icon name="map-outline"></ion-icon>
+              <p th:text="'Країна: ' + ${system?.country?.name != null and system?.country?.name != '' ? system?.country?.name : 'Пусто'}"></p>
+            </div>
+            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+          </li>
+          <li class="side-color">
+            <div class="task-title">
+              <ion-icon name="construct-outline"></ion-icon>
+              <p th:text="'Тип ПЗ: ' + ${system?.type?.name != null and system?.type?.name != '' ? system?.type?.name : 'Пусто'}"></p>
+            </div>
+            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+          </li>
+        </ul>
+      </div>
+
+      <div class="map">
+        <div class="bottom-data">
+          <div class="map-container" id="google-map"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
