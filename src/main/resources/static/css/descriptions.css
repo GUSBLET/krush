@@ -101,6 +101,19 @@
     margin-bottom: 0;
 }
 
+.descriptions-input {
+  background: transparent;
+  margin-left: 10px;
+  width: 100%;
+  height: 20px;
+}
+textarea {
+  background: transparent;
+  resize: none;
+  width: 100%;
+}
+
+
 @media screen and (max-width: 576px) {
 
     .descriptions .bottom-data .header{
@@ -115,4 +128,29 @@
         min-width: 340px;
     }
 
+}
+
+.btn-login-container {
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.btn-login {
+    font-family: Montserrat, sans-serif;
+    font-size: 1rem;
+    background-color: rgb(229 231 235);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 200ms ease-in;
+    box-shadow: 0 0 10px rgb(128, 128, 128);
+    margin: auto;
+}
+
+.btn-login:hover {
+    background: rgb(240, 248, 255);
+    box-shadow: 0 0 16px rgb(51 65 85);
 }

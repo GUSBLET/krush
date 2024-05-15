@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <title th:text="${title}"></title>
+</head>
+<body>
+
+<main th:fragment="content(signIn)">
+
+    <div class="container">
+        <div class="container-login">
+            <div th:if="${param.error}">
+                <div class="error-msg" style="color:red">
+                    <i class="fa fa-times-circle"></i>
+                    Перевірте логін чи пароль на вірність
+                </div>
+            </div>
+            <h1 class="account-title">Авторизація</h1>
+            <form th:action="@{/authenticate}" th:object="${signIn}" method="post" class="login-form">
+                <div class="input-container">
+                    <label for="login">Логін</label>
+                    <input type="text" id="login" name="login" placeholder="Введіть логін...">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" placeholder="Введіть пароль...">
+                </div>
+                <div class="btn-login-container">
+                    <button class="btn-login">Авторизуватися</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

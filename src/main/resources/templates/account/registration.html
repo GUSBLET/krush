@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main th:fragment="content(entity)">
+    <div class="container">
+        <div class="container-login">
+            <h1 class="account-title">Регістрація</h1>
+            <form th:action="@{/account/technical/registration}" th:object="${entity}" method="post" class="login-form">
+                <div class="input-container">
+                    <label for="login">Email</label>
+                    <input th:field="*{email}" type="text" id="login" placeholder="Введіть електронну адресу...">
+                    <span style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                    <label for="password">Пароль</label>
+                    <input th:field="*{password}" type="password" id="password" placeholder="Введіть пароль...">
+                    <span style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                    <label for="confirm password">Повторіть пароль</label>
+                    <input th:field="*{passwordConfirm}" type="password" id="confirm password" placeholder="Введіть пароль...">
+                    <span style="color:red" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></span>
+                    <label for="secret key">Секретний ключ</label>
+                    <input th:field="*{secretKey}" type="password" id="secret key" placeholder="Введіть секретний ключ...">
+                    <span style="color:red" th:if="${#fields.hasErrors('secretKey')}" th:errors="*{secretKey}"></span>
+                </div>
+                <div class="btn-login-container">
+                    <button class="btn-login">Зареєструватися</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

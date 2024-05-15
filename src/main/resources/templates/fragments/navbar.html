@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,7 +13,7 @@
                             <span class="icon">
                                 <ion-icon name="earth-outline"></ion-icon>
                             </span>
-                <span class="title">Something</span>
+                <span class="title">Eco system</span>
             </a>
         </li>
 
@@ -22,26 +22,92 @@
                             <span class="icon">
                                 <ion-icon name="bar-chart-outline"></ion-icon>
                             </span>
-                <span class="title">Main Table</span>
+                <span class="title">Головна сторінка</span>
             </a>
         </li>
-        <th:block th:unless="${content == 'showcase'}">
+        <th:block th:if="${content == 'description' || content == 'supplements'}">
             <li>
-                <a th:href="@{/description(id=${id})}">
+                <a th:href="@{/system/description(id=${id})}">
                             <span class="icon">
                                 <ion-icon name="book-outline"></ion-icon>
                             </span>
-                    <span class="title">Descriptions</span>
+                    <span class="title">Опис</span>
                 </a>
             </li>
 
             <li>
-                <a th:href="@{/supplements(id=${id})}">
+                <a th:href="@{/system/supplements(id=${id})}">
                             <span class="icon">
                                 <ion-icon name="desktop-outline"></ion-icon>
                             </span>
-                    <span class="title">Supplements</span>
+                    <span class="title">Додатково</span>
                 </a>
+            </li>
+        </th:block>
+
+        <th:block th:if="${content == 'tech-description' || content == 'tech-supplements'}">
+            <li>
+                <a th:href="@{/technical/system/get-system(id=${id})}">
+                            <span class="icon">
+                                <ion-icon name="book-outline"></ion-icon>
+                            </span>
+                    <span class="title">Опис</span>
+                </a>
+            </li>
+
+            <li>
+                <a th:href="@{/technical/system/get-system-supplements(id=${id})}">
+                            <span class="icon">
+                                <ion-icon name="desktop-outline"></ion-icon>
+                            </span>
+                    <span class="title">Додатково</span>
+                </a>
+            </li>
+        </th:block>
+
+
+        <th:block sec:authorize="!isAuthenticated()">
+            <li>
+                <a href="/account/technical/login-page">
+                            <span class="icon">
+                                <ion-icon name="log-in-outline"></ion-icon>
+                            </span>
+                    <span class="title">Авторизація</span>
+                </a>
+            </li>
+            <li>
+                <a href="/account/technical/registration-page">
+                            <span class="icon">
+                                <ion-icon name="person-add-outline"></ion-icon>
+                            </span>
+                    <span class="title">Регестрація</span>
+                </a>
+            </li>
+        </th:block>
+        <th:block sec:authorize="isAuthenticated()">
+            <li>
+            <a th:href="@{/technical/system/systems-controller-panel}"  th:method="get">
+                            <span class="icon">
+                                <ion-icon name="trending-up-outline"></ion-icon>
+                            </span>
+                <span class="title">Список систем</span>
+            </a>
+            </li>
+            <li>
+                <a th:href="@{/technical/system/create-system}"  th:method="get">
+                            <span class="icon">
+                                <ion-icon name="trending-up-outline"></ion-icon>
+                            </span>
+                    <span class="title">Додати систему</span>
+                </a>
+            </li>
+            <li>
+            <a th:href="@{/account/technical/logout}"  th:method="post">
+                            <span class="icon">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </span>
+                <span class="title">Вихід</span>
+            </a>
             </li>
         </th:block>
     </ul>

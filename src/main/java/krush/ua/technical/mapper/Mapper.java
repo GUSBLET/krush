@@ -1,4 +1,4 @@
-package krush.ua.mapper;
+package krush.ua.technical.mapper;
 
 import java.util.List;
 import java.util.Set;

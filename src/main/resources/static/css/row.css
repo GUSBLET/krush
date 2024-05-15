@@ -29,14 +29,35 @@
     font-size: 20px;
 }
 
+.symbol-container {
+  display: flex;
+  gap: 16px;
+}
+
 .acc-text p {
     font-size: 14px;
     color: #1b1b1b;
 }
 
-.accordion.active .acc-text {
+.accordion.active .acc-text, .symbol.active {
     max-height: 100vh;
     transition: all 1s ease-in-out;
+}
+
+.descriptions-input {
+  background: transparent;
+  margin-left: 10px;
+  width: 100%;
+  height: 20px;
+}
+
+.accordion-title {
+  display: flex;
+  gap: 16px;
+}
+
+.accordion-title .symbol {
+  font-size: 1.3rem;
 }
 
 /*Current Title */
@@ -166,3 +187,10 @@
 
 }
 
+.send-button{
+    margin-left: 40px;
+    background: #87CEEB;
+    height: 20px;
+    width: 60px;
+    border-radius: 10px;
+}

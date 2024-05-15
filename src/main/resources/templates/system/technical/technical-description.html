@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="techincalDescription(entity)">
+    <main class="descriptions">
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+        </div>
+        <form  th:action="@{/technical/system/update-main-system-information}" method="post">
+            <div class="bottom-data">
+
+                <div class="descriptions-list">
+                    <div class="header">
+                        <ion-icon name="clipboard-outline"></ion-icon>
+                        <h3>Опис</h3>
+                    </div>
+                    <ul class="list-name">
+                        <li class="side-color">
+                            <div class="task-title">
+                                <ion-icon name="happy-outline"></ion-icon>
+                                <p>Назва</p>
+                                <input class="descriptions-input" type="text" th:field="*{entity.name}"
+                                       placeholder="Назва">
+                            </div>
+                            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                        </li>
+                        <li class="side-color">
+                            <div class="task-title">
+                                <ion-icon name="walk-outline"></ion-icon>
+                                <p>Автор</p>
+                                <input class="descriptions-input" type="text" th:field="*{entity.developer}"
+                                       placeholder="Автор">
+                            </div>
+                            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                        </li>
+                        <li class="side-color">
+                            <div class="task-title">
+                                <ion-icon name="layers-outline"></ion-icon>
+                                <p>Наявність Класифікатора прийняття рішень</p>
+                                <input type="checkbox" th:field="*{entity.availabilityOfDecisionMakingClassifier}"
+                                       th:checked="${entity.availabilityOfDecisionMakingClassifier}">
+                            </div>
+                            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                        </li>
+                        <li class="side-color">
+                            <div class="task-title">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <p>Рік випуску</p>
+                                <input class="descriptions-input" th:field="*{entity.releaseDate}" type="number"
+                                       placeholder="Рік випуску">
+                            </div>
+                            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                        </li>
+                        <li class="side-color">
+                            <div class="task-title">
+                                <ion-icon name="map-outline"></ion-icon>
+                                <p>Назва</p>
+                                <input class="descriptions-input" type="text" th:field="*{entity.country.name}"
+                                       placeholder="Країна">
+                            </div>
+                            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                        </li>
+                        <li class="side-color">
+                            <div class="task-title">
+                                <ion-icon name="construct-outline"></ion-icon>
+                                <p th:text="'Тип ПЗ: ' + ${entity?.type?.getUkrainianName != null and entity?.type?.getUkrainianName != '' ? entity?.type?.getUkrainianName : 'Пусто'}"></p>
+                            </div>
+                            <select id="type" name="type">
+                                <option value="" selected>Виберіть</option>
+                                <option value="WEB">ВЕБ</option>
+                                <option value="WEB_SHELL">ВЕБ-оболонка</option>
+                                <option value="DESKTOP_SOFTWARE">ПЗ робочого столу</option>
+                                <option value="DESKTOP_SOFTWARE_AND_WEB_SHELL">ПЗ робочого столу та ВЕБ-оболонка
+                                </option>
+                            </select>
+                            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="map">
+                    <div class="bottom-data">
+                        <div class="descriptions-container">
+                            <p>Description</p>
+                            <textarea th:field="*{entity.description}" name="description-table" cols="30" rows="10"
+                                      placeholder="Edit..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-login-container">
+                <button class="btn-login">Submit</button>
+            </div>
+        </form>
+    </main>
+</div>
+</body>
+</html>

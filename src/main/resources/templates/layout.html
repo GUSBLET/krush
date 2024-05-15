@@ -6,15 +6,22 @@
     <link href="/css/style.css" rel="stylesheet">
     <link href="/css/tablet.css" rel="stylesheet">
     <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/modal.css" rel="stylesheet">
 
-    <th:block th:if="${content == 'description'}">
+    <th:block th:if="${content == 'description' || content == 'tech-description'}">
         <link href="/css/descriptions.css" rel="stylesheet">
-        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
     </th:block>
-    <th:block th:if="${content == 'supplements'}">
+    <th:block th:if="${content == 'supplements' || content == 'tech-supplements'}">
         <link href="/css/row.css" rel="stylesheet">
     </th:block>
+    <th:block th:if="${content == 'registration-page' || content == 'login-page' || content == 'entering-system-main-information-page'
+    || content == 'tech-lit' || content == 'tech-env' || content == 'tech-func' || content == 'tech-class' } ">
+        <link href="/css/account.css" rel="stylesheet">
+    </th:block>
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="/js/modal.js"></script>
     <script src="/js/index.js" defer></script>
+
 </head>
 <body>
 <div class="container">
@@ -23,8 +30,8 @@
     <th:block th:case="'showcase'">
         <div th:replace="~{system/showcase :: content(${systems})}"></div>
     </th:block>
-    <th:block th:case="'system-page'">
-        <main th:replace="~{system/page :: content(page)}"></main>
+    <th:block th:case="'systems-controller-panel'">
+        <div th:replace="~{system/technical/controller-panel :: content(${entity})}"></div>
     </th:block>
     <th:block th:case="'description'">
         <main th:replace="~{system/page.sections/description :: description(${system})}"></main>
@@ -32,9 +39,51 @@
     <th:block th:case="'supplements'">
         <main th:replace="~{system/page.sections/supplements :: supplements(${system})}"></main>
     </th:block>
+    <th:block th:case="'registration-page'">
+        <main th:replace="~{account/registration :: content(${entity})}"></main>
+    </th:block>
+    <th:block th:case="'login-page'">
+        <main th:replace="~{account/login :: content(${entity})}"></main>
+    </th:block>
+    <th:block th:case="'entering-system-main-information-page'">
+        <main th:replace="~{system/technical/page-of-entering-main-information :: content(${entity})}"></main>
+    </th:block>
+
+
+    <th:block th:case="'tech-description'">
+        <main th:replace="~{system/technical/technical-description :: techincalDescription(${entity})}"></main>
+    </th:block>
+    <th:block th:case="'tech-supplements'">
+        <main th:replace="~{system/technical/tech-supplements :: supplements(${entity})}"></main>
+    </th:block>
+    <th:block th:case="'tech-lit'">
+        <main th:replace="~{system/technical/tech-lit :: content(${entity})}"></main>
+    </th:block>
+    <th:block th:case="'tech-env'">
+        <main th:replace="~{system/technical/tech-env :: content(${entity})}"></main>
+    </th:block>
+    <th:block th:case="'tech-func'">
+        <main th:replace="~{system/technical/tech-func :: content(${entity})}"></main>
+    </th:block>
+    <th:block th:case="'tech-class'">
+        <main th:replace="~{system/technical/tech-class :: content(${entity})}"></main>
+    </th:block>
 </th:block>
 </div>
-<!--<div th:replace="~{fragments/footer :: footer()}"></div>-->
+
+<div id="modal-temp" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="main-content-modal">
+
+        </div>
+        <div style="padding-top: 10px" id="controller-panel">
+
+        </div>
+    </div>
+</div>
+
+
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

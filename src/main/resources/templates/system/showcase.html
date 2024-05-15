@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="tablet">
-            <h3>Main tablet</h3>
+            <h3>Каталог комп'ютерних систем, які працюють у сфері моніторингу довкілля</h3>
             <table>
                 <thead>
                 <tr>
@@ -41,7 +41,7 @@
                     <td th:text="${item?.country?.name}"></td>
                     <td th:text="${item?.type?.name}"></td>
                     <td>
-                        <a th:href="@{/description(id=${item.id})}" class="show-link">Show</a>
+                        <a th:href="@{/system/description(id=${item.id})}" class="show-link">Відкрити</a>
                     </td>
                 </tr>
                 </tbody>
@@ -53,7 +53,7 @@
                         th:data-path="${'/?page=' + (systems.number - 1)}"
                         id="previousBtn"
                         aria-label="Previous">
-                    &laquo; Previous
+                    &laquo; Попередня
                 </button>
 
                 <span th:if="${systems.getTotalElements() > 0}" th:text="${systems.number + 1}" id="currentPage"></span>
@@ -63,7 +63,7 @@
                         th:data-path="${'/?page=' + (systems.number + 1)}"
                         aria-label="Next"
                         class="btn-table">
-                    Next &raquo;
+                    Наступна &raquo;
                 </button>
             </div>
         </div>

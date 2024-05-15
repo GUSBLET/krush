@@ -17,7 +17,7 @@
       <div class="descriptions-list">
         <div class="header">
           <ion-icon name="clipboard-outline"></ion-icon>
-          <h3>Descriptions</h3>
+          <h3>Опис</h3>
         </div>
         <ul class="list-name">
           <li class="side-color">
@@ -67,7 +67,10 @@
 
       <div class="map">
         <div class="bottom-data">
-          <div class="map-container" id="google-map"></div>
+          <div class="descriptions-container">
+            <p>Description</p>
+            <p th:text="${system?.description}"></p>
+          </div>
         </div>
       </div>
     </div>

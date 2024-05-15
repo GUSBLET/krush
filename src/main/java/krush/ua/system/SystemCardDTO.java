@@ -1,6 +1,6 @@
 package krush.ua.system;
 
-import krush.ua.mapper.Mapper;
+import krush.ua.technical.mapper.Mapper;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

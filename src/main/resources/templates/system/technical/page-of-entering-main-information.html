@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main th:fragment="content(entity)">
+    <div class="container">
+        <div class="container-login">
+            <h1 class="account-title">Add system</h1>
+            <form th:action="@{/technical/system/save-main-system-information}" th:object="${entity}" method="post" class="login-form">
+                <div class="input-container">
+                    <label for="name">Назва</label>
+                    <input th:field="*{name}" type="text" id="name" placeholder="Type name...">
+                    <span style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                    <label for="description">Опис</label>
+                    <input th:field="*{description}" type="text" id="description" placeholder="Type name...">
+                    <span style="color:red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+                    <label for="developer">Розробник</label>
+                    <input th:field="*{developer}" type="text" id="developer" placeholder="Type name...">
+                    <span style="color:red" th:if="${#fields.hasErrors('developer')}" th:errors="*{developer}"></span>
+                    <label for="country">Країна</label>
+                    <input th:field="*{country}" type="text" id="country" placeholder="Type name...">
+                    <span style="color:red" th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></span>
+
+                    <label for="type">Тип по</label>
+                    <select id="type" th:field="*{type}">
+                        <option value="WEB">ВЕБ</option>
+                        <option value="WEB_SHELL">ВЕБ-оболонка</option>
+                        <option value="DESKTOP_SOFTWARE">ПЗ робочого столу</option>
+                        <option value="DESKTOP_SOFTWARE_AND_WEB_SHELL">ПЗ робочого столу та ВЕБ-оболонка</option>
+                    </select>
+                    <span style="color:red" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></span>
+
+                    <label for="releaseDate">Дата релізу</label>
+                    <input th:field="*{releaseDate}" type="number" inputmode="numeric" id="releaseDate" step="1">
+                    <span style="color:red" th:if="${#fields.hasErrors('releaseDate')}" th:errors="*{releaseDate}"></span>
+
+
+                    <label for="availabilityOfDecisionMakingClassifier">Наявність Класифікатора прийняття рішень</label>
+                    <input th:field="*{availabilityOfDecisionMakingClassifier}" type="checkbox" id="availabilityOfDecisionMakingClassifier">
+                    <span style="color:red" th:if="${#fields.hasErrors('availabilityOfDecisionMakingClassifier')}" th:errors="*{availabilityOfDecisionMakingClassifier}"></span>
+                </div>
+
+                <div class="btn-login-container">
+                    <button class="btn-login">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

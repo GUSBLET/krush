@@ -1,0 +1,119 @@
+.container-login {
+    display: flex;
+    height: 640px;
+    flex-direction: column;
+    background: white;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(128, 128, 128);
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.input-container label {
+    margin-bottom: 5px;
+}
+
+.input-container input[type=text], input[type=number], input[type=password] {
+    width: 300px;
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: rgb(229 231 235);
+    box-shadow: 0 0 6px rgb(128, 128, 128);
+}
+
+.btn-login-container {
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.btn-login {
+    font-family: Montserrat, sans-serif;
+    font-size: 1rem;
+    background-color: rgb(229 231 235);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 200ms ease-in;
+    box-shadow: 0 0 10px rgb(128, 128, 128);
+    margin: auto;
+}
+
+.btn-login:hover {
+    background: rgb(240, 248, 255);
+    box-shadow: 0 0 16px rgb(51 65 85);
+}
+
+.account-title {
+    padding-bottom: 30px;
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.input-container select {
+    width: 300px;
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: rgb(229, 231, 235);
+    box-shadow: 0 0 6px rgb(128, 128, 128);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    -ms-appearance: none;
+    outline: none;
+    border: none;
+}
+
+/* Стили для обычного чекбокса */
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+    vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Стили для проверенного обычного чекбокса */
+input[type="checkbox"]:checked {
+    background-color: #2196F3; /* Цвет фона при выборе */
+    border-color: #2196F3; /* Цвет границы при выборе */
+}
+
+/* Стили для внутреннего выделения галочки */
+input[type="checkbox"]:checked::before {
+    content: '\2713'; /* Юникод символ галочки */
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: white; /* Цвет галочки */
+    font-size: 12px; /* Размер шрифта галочки */
+    line-height: 16px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

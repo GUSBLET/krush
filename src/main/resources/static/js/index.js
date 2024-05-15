@@ -20,37 +20,24 @@ toggle.onclick = function () {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-    const accordions = document.querySelectorAll('.accordion');
+  const accordions = document.querySelectorAll('.accordion');
 
-    accordions.forEach(accordion => {
-        accordion.addEventListener('click', function () {
-            this.classList.toggle('active');
-        });
-    });
+  accordions.forEach(accordion => {
+      let isOpen = false; // Переменная для отслеживания состояния аккордеона
+
+      accordion.addEventListener('click', function () {
+          isOpen = !isOpen; // Изменяем состояние на противоположное при каждом клике
+          this.classList.toggle('active');
+      });
+
+      // Добавляем обработчик события для полей ввода внутри аккордеона
+      const inputs = accordion.querySelectorAll('input');
+      inputs.forEach(input => {
+          input.addEventListener('click', function (event) {
+              event.stopPropagation(); // Предотвращаем всплытие события, чтобы оно не достигло аккордеона и не вызвало его закрытие
+          });
+      });
+  });
 });
 
-
-function initMap() {
-    // Specify the initial location for the map
-    let initialLocation = { lat: 37.7749, lng: -122.4194 }; // Replace with your desired coordinates
-
-    // Create a map centered at the initial location
-    let map = new google.maps.Map(document.getElementById('google-map'), {
-        center: initialLocation,
-        zoom: 10, // Adjust the zoom level as needed
-    });
-
-    // You can add markers or other map functionality as per your requirements
-    // Example: Add a marker at the initial location
-    let marker = new google.maps.Marker({
-        position: initialLocation,
-        map: map,
-        title: 'Marker Title',
-    });
-}
-
-// Initialize the map when the page loads
-window.onload = function () {
-    initMap();
-};
 

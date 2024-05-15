@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <title th:text="${title}"></title>
+</head>
+<body>
+
+<main th:fragment="content(entiry)">
+
+    <div class="container">
+        <div class="container-login">
+            <div th:if="${param.error}">
+                <div class="error-msg" style="color:red">
+                    <i class="fa fa-times-circle"></i>
+                    Перевірте логін чи пароль на вірність
+                </div>
+            </div>
+            <h1 class="account-title">Добавити</h1>
+            <form th:action="@{/technical/system/add-new-func}" method="get" class="login-form">
+                <div class="input-container">
+                    <label for="name">Назва</label>
+                    <input type="hidden" id="id" th:value="${entiry}" name="id" readonly>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="btn-login-container">
+                    <button class="btn-login">Добавити</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="supplements(entity)">
+    <main class="supplements">
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+        </div>
+        <h3 th:text="${'Назва: ' + entity.name}"></h3>
+        <form th:object="${entity}" th:action="@{/technical/system/update-supplements-system-information}"
+              method="post">
+            <div class="analytics">
+                <!-- Literature -->
+                <div class="accordion-group">
+                    <div class="accordion-title">
+                        <h2>Література</h2>
+                        <a th:href="'/technical/system/add-literature?id=' + ${entity.id}">
+                            <p class="symbol">+</p>
+                        </a>
+                    </div>
+                    <div th:if="${entity.literatures == null or entity.literatures.isEmpty()}" class="item">
+                        <div class="accordion acc-box">
+                            <div class="acc-heading">
+                                <h5>Пусто</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:each="literature, iterStat : ${entity?.literatures}" class="item"
+                         th:id="'literature-' + ${literature.id}">
+                        <input class="descriptions-input" th:field="*{literatures[__${iterStat.index}__].id}"
+                               type="hidden">
+                        <div class="accordion acc-box">
+                            <div class="acc-heading">
+                                <h5 th:text="${'Назва: ' + literature.name}"></h5>
+                                <div class="symbol-container">
+                                <a th:href="'/technical/system/remove-item?id=' + ${entity.id} + '&itemId='  + ${literature.id} + '&type=lit'">
+                                    <p class="symbol">-</p>
+                                </a>
+                                </div>
+                            </div>
+                            <div class="acc-text">
+                                <div class="bottom-data">
+                                    <div class="descriptions-list">
+                                        <ul class="list-name">
+                                            <li class="side-color">
+                                                <div class="task-title">
+                                                    <p>Назва: </p>
+                                                    <input class="descriptions-input"
+                                                           th:field="*{literatures[__${iterStat.index}__].name}"
+                                                           type="text" placeholder="Edit...">
+                                                </div>
+                                            </li>
+                                            <li class="side-color">
+                                                <div class="task-title">
+                                                    <p>Автор: </p>
+                                                    <input class="descriptions-input"
+                                                           th:field="*{literatures[__${iterStat.index}__].author}"
+                                                           type="text" placeholder="Edit...">
+                                                </div>
+                                            </li>
+                                            <li class="side-color">
+                                                <div class="task-title">
+                                                    <p>Опис: </p>
+                                                    <input class="descriptions-input"
+                                                           th:field="*{literatures[__${iterStat.index}__].description}"
+                                                           type="text" placeholder="Edit...">
+                                                </div>
+                                            </li>
+                                            <li class="side-color">
+                                                <div class="task-title">
+                                                    <p>Дата останього доступу: </p>
+                                                    <input class="descriptions-input"
+                                                           th:field="*{literatures[__${iterStat.index}__].dateOfLastAccess}"
+                                                           type="text" placeholder="Edit...">
+                                                </div>
+                                            </li>
+                                            <li class="side-color">
+                                                <div class="task-title">
+                                                    <p>Посилання: </p>
+                                                    <input class="descriptions-input"
+                                                           th:field="*{literatures[__${iterStat.index}__].url}"
+                                                           type="text" placeholder="Edit...">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="accordion-group">
+                    <div class="accordion-title">
+                        <h2>Додаткові характеристики систем</h2>
+                        <a th:href="'/technical/system/add-classifier?id=' + ${entity.id}">
+                            <p class="symbol">+</p>
+                        </a>
+                    </div>
+                    <div th:if="${entity.classifierComputerSystems == null or entity.classifierComputerSystems.isEmpty()}"
+                         class="item">
+                        <div class="accordion acc-box">
+                            <div class="acc-heading">
+                                <h5>Пусто</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:each="classifierSystem, iterStat : ${entity?.classifierComputerSystems}" class="item"
+                         th:id="'classifier-' + ${classifierSystem.id}">
+                        <input class="descriptions-input"
+                               th:field="*{classifierComputerSystems[__${iterStat.index}__].id}"
+                               type="hidden">
+                        <div class="accordion acc-box">
+                            <div class="acc-heading">
+                                <h5 th:text="${'Назва: ' + (classifierSystem?.name != null and classifierSystem?.name != '' ? classifierSystem?.name : 'Пусто')}"></h5>
+                                <a th:href="'/technical/system/remove-item?id=' + ${entity.id} + '&itemId='  + ${classifierSystem.id} + '&type=class'">
+                                    <p class="symbol">-</p>
+                                </a>
+                            </div>
+                            <div class="acc-text">
+                                <div class="bottom-data">
+                                    <div class="descriptions-list">
+                                        <ul class="list-name">
+                                            <li class="side-color">
+                                                <div class="task-title">
+                                                    <p>Назва: </p>
+                                                    <input class="descriptions-input"
+                                                           th:field="*{classifierComputerSystems[__${iterStat.index}__].name}"
+                                                           type="text" placeholder="Edit...">
+                                                </div>
+                                            </li>
+                                            <li class="side-color">
+                                                <div class="task-title">
+                                                    <p>Опис: </p>
+                                                    <input class="descriptions-input"
+                                                           th:field="*{classifierComputerSystems[__${iterStat.index}__].description}"
+                                                           type="text" placeholder="Edit...">
+                                                </div>
+                                            </li>
+                                            <li class="side-color">
+                                                <div class="task-title">
+                                                    <p>Тип: </p>
+                                                    <input class="descriptions-input"
+                                                           th:field="*{classifierComputerSystems[__${iterStat.index}__].classifierComputerSystemType.name}"
+                                                           type="text" placeholder="Edit...">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expert Functions -->
+                <div class="accordion-group">
+                    <div class="accordion-title">
+                        <h2>Експерти користувачі</h2>
+                        <a th:href="'/technical/system/add-function?id=' + ${entity.id}">
+                            <p onclick="" class="symbol">+</p>
+                        </a>
+                    </div>
+                    <div th:if="${entity.expertFunctions == null or entity.expertFunctions.isEmpty()}" class="item">
+                        <div class="accordion acc-box">
+                            <div class="acc-heading">
+                                <h5>Пусто</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:each="expertFunction : ${entity?.expertFunctions}" class="item">
+                        <div class="accordion acc-box">
+                            <div class="acc-heading">
+                                <h5 th:text="${'Назва: ' + expertFunction.name}"></h5>
+                                <a th:href="'/technical/system/remove-item?id=' + ${expertFunction.id} + '&type=func'">
+                                    <p class="symbol">-</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Environmental Monitoring Classifiers -->
+                <div class="accordion-group">
+                    <div class="accordion-title">
+                        <h2>Класифікатори екологічного моніторингу</h2>
+                        <a th:href="'/technical/system/add-environmental?id=' + ${entity.id}">
+                            <p onclick="" class="symbol">+</p>
+                        </a>
+                    </div>
+                    <div th:if="${entity.environmentalMonitoringClassifiers == null or entity.environmentalMonitoringClassifiers.isEmpty()}"
+                         class="item">
+                        <div class="accordion acc-box">
+                            <div class="acc-heading">
+                                <h5>Пусто</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:each="environmentalMonitoringClassifier : ${entity?.environmentalMonitoringClassifiers}"
+                         class="item">
+                        <div class="accordion acc-box">
+                            <div class="acc-heading">
+                                <h5 th:text="${'Назва: ' + environmentalMonitoringClassifier.name}"></h5>
+                                <div class="symbol-container">
+                                <a th:href="'/technical/system/remove-item?id=' + ${environmentalMonitoringClassifier.id} + '&type=env'">
+                                    <p class="symbol">-</p>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="send-button" type="submit">Submit</button>
+        </form>
+
+    </main>
+
+
+</div>
+</body>
+</html>

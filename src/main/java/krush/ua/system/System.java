@@ -21,6 +21,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "systems", schema = "monitoring_systems")
 public class System {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -34,14 +35,11 @@ public class System {
     @Column(name = "availability_of_decision_making_classifiers", columnDefinition = "boolean")
     private boolean availabilityOfDecisionMakingClassifier;
 
-    @Column(name = "release_date", columnDefinition = "year")
-    private int releaseDate;
+    @Column(name = "release_date", columnDefinition = "int")
+    private Integer releaseDate;
 
-    @Column(name = "longitude", columnDefinition = "float")
-    private float longitude;
-
-    @Column(name = "latitude", columnDefinition = "float")
-    private float latitude;
+    @Column(name = "description", columnDefinition = "varchar(1000)")
+    private String description;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "software_type_id")

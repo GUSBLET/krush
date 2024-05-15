@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <title th:text="${title}"></title>
+</head>
+<body>
+
+<main th:fragment="content(entiry)">
+
+    <div class="container">
+        <div class="container-login">
+
+            <h1 class="account-title">Добавити</h1>
+            <form th:action="@{/technical/system/add-new-literature}" method="get" class="login-form">
+                <div class="input-container">
+                    <label for="name">Назва</label>
+                    <input type="hidden" id="id" th:value="${entiry}" name="id" readonly>
+                    <input type="text" id="name" name="name" required>
+                    <label for="description">Опис</label>
+                    <input type="text" id="description" name="description" >
+                    <label for="author">Автор</label>
+                    <input type="text" id="author" name="author" placeholder="Введіть пароль...">
+                    <label for="url">Посилання</label>
+                    <input type="text" id="url" name="url" placeholder="Введіть пароль...">
+                    <label for="dateOfLastAccess">Дата останього доступу</label>
+                    <input type="date" id="dateOfLastAccess" name="dateOfLastAccess" placeholder="Введіть пароль...">
+
+                </div>
+                <div class="btn-login-container">
+                    <button class="btn-login">Добавити</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
