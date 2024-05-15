@@ -90,12 +90,7 @@ public class SystemController {
         return "layout";
     }
 
-//    @GetMapping("/technical/system/remove-system")
-//    @ResponseBody
-//    public ResponseEntity<Void> removeSystemById(@RequestParam Integer id) {
-//        systemService.removeSystemById(id);
-//        return ResponseEntity.ok().build();
-//    }
+
 
     @PostMapping("/technical/system/save-main-system-information")
     public String saveMainSystemInformation(@Valid @ModelAttribute("entity") EnteringSystemMainInformationDTO dto,
@@ -300,4 +295,12 @@ public class SystemController {
 //        systemService.removeItem(type, itemId, id);
 //        return "redirect:/technical/system/get-system-supplements?id=" + id;
 //    }
+
+
+    @GetMapping("/technical/system/remove-system")
+    @ResponseBody
+    public ResponseEntity<Void> removeSystemById(@RequestParam Integer id) {
+        systemService.removeSystemById(id);
+        return ResponseEntity.ok().build();
+    }
 }
