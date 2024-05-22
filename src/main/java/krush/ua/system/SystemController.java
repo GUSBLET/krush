@@ -52,18 +52,18 @@ public class SystemController {
         return "layout";
     }
 
-//    @GetMapping("/system/supplements")
-//    public String getSystemSupplements(
-//            @RequestParam(name = "id") int id,
-//            Model model) {
-//        System system = systemService.getSystemById(id);
-//        model.addAttribute("title", system.getName());
-//        model.addAttribute("content", "supplements");
-//        model.addAttribute("id", system.getId());
-//        model.addAttribute("system", system);
-//
-//        return "layout";
-//    }
+    @GetMapping("/system/supplements")
+    public String getSystemSupplements(
+            @RequestParam(name = "id") int id,
+            Model model) {
+        System system = systemService.getSystemById(id);
+        model.addAttribute("title", system.getName());
+        model.addAttribute("content", "supplements");
+        model.addAttribute("id", system.getId());
+        model.addAttribute("system", system);
+
+        return "layout";
+    }
 
     @GetMapping("/technical/system/systems-controller-panel")
     public String getSystemsControllerPanel(@RequestParam(name = "page", defaultValue = "0") int page,
@@ -195,27 +195,27 @@ public class SystemController {
         return "layout";
     }
 
-//    @GetMapping("/technical/system/add-literature")
-//    public String getAddLiterById(@RequestParam Integer id,
-//                                  Model model) {
-//        ModelAttributeManager.setModelAttribute(model, ModelPageAttributes.builder()
-//                .title("Нова система")
-//                .content("tech-lit")
-//                .entity(id)
-//                .build());
-//        return "layout";
-//    }
+    @GetMapping("/technical/system/add-literature")
+    public String getAddLiterById(@RequestParam Integer id,
+                                  Model model) {
+        ModelAttributeManager.setModelAttribute(model, ModelPageAttributes.builder()
+                .title("Нова система")
+                .content("tech-lit")
+                .entity(id)
+                .build());
+        return "layout";
+    }
 
-//    @GetMapping("/technical/system/add-classifier")
-//    public String getAddClassById(@RequestParam Integer id,
-//                                  Model model) {
-//        ModelAttributeManager.setModelAttribute(model, ModelPageAttributes.builder()
-//                .title("Нова система")
-//                .content("tech-class")
-//                .entity(id)
-//                .build());
-//        return "layout";
-//    }
+    @GetMapping("/technical/system/add-classifier")
+    public String getAddClassById(@RequestParam Integer id,
+                                  Model model) {
+        ModelAttributeManager.setModelAttribute(model, ModelPageAttributes.builder()
+                .title("Нова система")
+                .content("tech-class")
+                .entity(id)
+                .build());
+        return "layout";
+    }
 
     @GetMapping("/technical/system/add-function")
     public String getAddFuncById(@RequestParam Integer id,
@@ -288,13 +288,13 @@ public class SystemController {
         return "redirect:/technical/system/get-system-supplements?id=" + id;
     }
 
-//    @GetMapping("/technical/system/remove-item")
-//    public String getAddClassById(@RequestParam Integer id,
-//                                  @RequestParam Integer itemId,
-//                                  @RequestParam String type) {
-//        systemService.removeItem(type, itemId, id);
-//        return "redirect:/technical/system/get-system-supplements?id=" + id;
-//    }
+    @GetMapping("/technical/system/remove-item")
+    public String getAddClassById(@RequestParam Integer id,
+                                  @RequestParam Integer itemId,
+                                  @RequestParam String type) {
+        systemService.removeItem(type, itemId, id);
+        return "redirect:/technical/system/get-system-supplements?id=" + id;
+    }
 
 
     @GetMapping("/technical/system/remove-system")

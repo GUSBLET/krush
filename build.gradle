@@ -29,6 +29,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	implementation 'mysql:mysql-connector-java:8.0.27'
+	// https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
+	implementation 'org.hibernate.orm:hibernate-core:6.3.1.Final'
+
 
 	annotationProcessor 'org.projectlombok:lombok'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
