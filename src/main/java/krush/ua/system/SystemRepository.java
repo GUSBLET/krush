@@ -32,8 +32,8 @@ public interface SystemRepository extends  PagingAndSortingRepository<System, In
             "WHERE s.id = :id")
     Optional<System> findByIdWithAssociations(@Param("id") Integer id);
 
-    @Query("SELECT s FROM System s LEFT JOIN FETCH s.country LEFT JOIN FETCH s.type")
-    Page<System> findAllWithCountryAndType(Pageable pageable);
+    @Query("SELECT s FROM System s LEFT JOIN FETCH s.country LEFT JOIN FETCH s.type WHERE LOWER(s.name) LIKE LOWER(CONCAT('%', :name, '%')) OR LOWER(s.developer) LIKE LOWER(CONCAT('%', :name, '%'))")
+    Page<System> findAllWithCountryAndType(Pageable pageable, @Param("name") String name);
 
 //    @Modifying
 //    @Query("INSERT INTO System (name, developer, availabilityOfDecisionMakingClassifier, releaseDate, description, type, country) " +

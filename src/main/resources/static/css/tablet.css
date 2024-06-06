@@ -106,3 +106,41 @@ main .tablet .pagination #currentPage {
     color: white;
     border-radius: 4px;
 }
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.search-input, .search-button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    margin: 0 5px;
+    font-size: 1rem;
+}
+
+.search-input {
+    flex: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--gray);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--blue);
+}
+
+.search-button {
+    background-color: var(--blue);
+    color: white;
+    cursor: pointer;
+    transition: background-color 300ms ease;
+}
+
+.search-button:hover {
+    background-color: var(--white);
+    color: var(--blue);
+    border: 1px solid var(--blue);
+}

@@ -40,9 +40,9 @@ public class SystemService {
     private final EnvironmentalMonitoringClassifierService environmentalMonitoringClassifierService;
     private final ClassifierComputerSystemService classifierComputerSystemService;
 
-    public Page<System> getTablePage(int page, int size) {
+    public Page<System> getTablePage(int page, int size, String name) {
         Pageable pageable = PageRequest.of(page, size);
-        return systemRepository.findAllWithCountryAndType(pageable);
+        return systemRepository.findAllWithCountryAndType(pageable, name);
     }
 
     public boolean systemNameIsExist(String name) {

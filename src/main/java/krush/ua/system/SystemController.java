@@ -29,12 +29,13 @@ public class SystemController {
     private final SystemService systemService;
 
     @GetMapping("/")
-    public String getShowcase(@RequestParam(name = "page", defaultValue = "0") int page,
+    public String getShowcase(@RequestParam(name = "name", defaultValue = "") String name,
+                              @RequestParam(name = "page", defaultValue = "0") int page,
                               @RequestParam(name = "size", defaultValue = "25") int size,
                               Model model) {
         model.addAttribute("title", "Вітрина");
         model.addAttribute("content", "showcase");
-        model.addAttribute("systems", systemService.getTablePage(page, size));
+        model.addAttribute("systems", systemService.getTablePage(page, size, name));
 
         return "layout";
     }
@@ -66,12 +67,13 @@ public class SystemController {
     }
 
     @GetMapping("/technical/system/systems-controller-panel")
-    public String getSystemsControllerPanel(@RequestParam(name = "page", defaultValue = "0") int page,
+    public String getSystemsControllerPanel(@RequestParam(name = "name", defaultValue = "") String name,
+                                            @RequestParam(name = "page", defaultValue = "0") int page,
                                             @RequestParam(name = "size", defaultValue = "25") int size,
                                             Model model) {
         ModelAttributeManager.setModelAttribute(model, ModelPageAttributes.builder()
                 .content("systems-controller-panel")
-                .entity(systemService.getTablePage(page, size))
+                .entity(systemService.getTablePage(page, size, name))
                 .title("Управління")
                 .build());
         return "layout";

@@ -13,6 +13,19 @@
             </div>
         </div>
         <div class="tablet">
+            <form th:action="@{/technical/system/systems-controller-panel}" method="get" class="search-form">
+                <input type="text" name="name" class="search-input">
+                <button type="submit" class="search-button">Пошук</button>
+            </form>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const params = new URLSearchParams(window.location.search);
+                    const name = params.get('name');
+                    if (name) {
+                        document.querySelector('.search-input').value = name;
+                    }
+                });
+            </script>
             <table>
                 <thead>
                 <tr>

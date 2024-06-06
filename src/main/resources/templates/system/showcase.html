@@ -14,6 +14,19 @@
         </div>
         <div class="tablet">
             <h3>Каталог комп'ютерних систем, які працюють у сфері моніторингу довкілля</h3>
+            <form th:action="@{/}" method="get" class="search-form">
+                <input type="text" name="name" class="search-input">
+                <button type="submit" class="search-button">Пошук</button>
+            </form>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const params = new URLSearchParams(window.location.search);
+                    const name = params.get('name');
+                    if (name) {
+                        document.querySelector('.search-input').value = name;
+                    }
+                });
+            </script>
             <table>
                 <thead>
                 <tr>
